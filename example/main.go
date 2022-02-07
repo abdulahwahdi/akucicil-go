@@ -31,7 +31,7 @@ func getInstallmentPlant(newAc akucicil.AkucicilService) {
             "categoryName": "Mobile",
             "skuId": "Mobile-0001",
             "skuName": "xiaomi",
-            "unitPrice": "59000000",
+            "unitPrice": 59000000,
             "qty": 1,
             "pictureUrl": "https://d12x8ezp3au6m3.cloudfront.net/item/oh0ymJAba3Ftg2NiGa1-pLD0MXo-KYUeHujlFwu79-4.png?w=526&h=526&fmt=webp&q=85&fit=0",
             "seller": {
@@ -44,7 +44,7 @@ func getInstallmentPlant(newAc akucicil.AkucicilService) {
             "categoryName": "PhoneCase",
             "skuId": "PhoneCase-0001",
             "skuName": "iphone13-case",
-            "unitPrice": "6500000",
+            "unitPrice": 6500000,
             "qty": 2,
             "pictureUrl": "https://d12x8ezp3au6m3.cloudfront.net/item/oh0ymJAba3Ftg2NiGa1-pLD0MXo-KYUeHujlFwu79-4.png?w=526&h=526&fmt=webp&q=85&fit=0",
             "seller": {
@@ -68,12 +68,12 @@ func getInstallmentPlant(newAc akucicil.AkucicilService) {
 
 func getCheckoutOrder(newAc akucicil.AkucicilService) {
 	jsonData := `{
-    "partnerOrderId": "REF-8890",
+    "partnerOrderId": "REF-8812324",
     "partnerOrderAmount": 72000000,
     "currency": "IDR",
     "redirectUrl": "https://www.your-redirect-url.com",
     "callbackUrl": "https://www.callback-url.com",
-    "expireTime": "2022-01-31T07:11:36+00:00",
+    "expireTime": "2022-02-07T11:09:00+00:00",
     "buyer": {
         "buyerId": "Buyer-0001",
         "buyerPhone": "+6281212345678",
@@ -97,7 +97,7 @@ func getCheckoutOrder(newAc akucicil.AkucicilService) {
             "categoryName": "Mobile",
             "skuId": "Mobile-0001",
             "skuName": "xiaomi",
-            "unitPrice": "59000000",
+            "unitPrice": 59000000,
             "qty": 1,
             "pictureUrl": "",
             "seller": {
@@ -110,7 +110,7 @@ func getCheckoutOrder(newAc akucicil.AkucicilService) {
             "categoryName": "PhoneCase",
             "skuId": "PhoneCase-0001",
             "skuName": "iphone13-case",
-            "unitPrice": "6500000",
+            "unitPrice": 6500000,
             "qty": 2,
             "pictureUrl": "",
             "seller": {

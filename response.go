@@ -41,7 +41,7 @@ type CheckoutOrderResp struct {
 type Order struct {
 	OrderID            string    `json:"orderId"`
 	PartnerOrderID     string    `json:"partnerOrderId"`
-	PartnerOrderAmount string    `json:"partnerOrderAmount"`
+	PartnerOrderAmount int64    `json:"partnerOrderAmount"`
 	OrderStatus        string    `json:"orderStatus"`
 	OrderStatusDesc    string    `json:"orderStatusDesc"`
 	PaymentEntryURL    string    `json:"paymentEntryUrl"`

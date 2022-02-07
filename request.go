@@ -4,7 +4,7 @@ import "time"
 
 type InstallmentPlanReq struct {
 	UserToken          string `json:"userToken,omitempty"`
-	PartnerOrderAmount int64 `json:"partnerOrderAmount"`
+	PartnerOrderAmount int64  `json:"partnerOrderAmount"`
 	Currency           string `json:"currency"`
 	Buyer              Buyer  `json:"buyer"`
 	Items              Items  `json:"items"`
@@ -29,7 +29,7 @@ type Item struct {
 	CategoryName string `json:"categoryName"`
 	SkuID        string `json:"skuId"`
 	SkuName      string `json:"skuName"`
-	UnitPrice    string `json:"unitPrice"`
+	UnitPrice    int64  `json:"unitPrice"`
 	Qty          int64  `json:"qty"`
 	PictureUrl   string `json:"pictureUrl,omitempty"`
 	Seller       Seller `json:"seller"`
