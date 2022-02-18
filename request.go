@@ -6,7 +6,7 @@ type InstallmentPlanReq struct {
 	UserToken          string `json:"userToken,omitempty"`
 	PartnerOrderAmount int64  `json:"partnerOrderAmount"`
 	Currency           string `json:"currency"`
-	Buyer              Buyer  `json:"buyer"`
+	Buyer              Buyer  `json:"buyer,omitempty"`
 	Items              Items  `json:"items"`
 }
 
@@ -67,4 +67,9 @@ type SignatureReq struct {
 	ReqID   string
 	ReqTime string
 	Body    string
+}
+
+type CancelOrderReq struct {
+	PartnerOrderId string `json:"partnerOrderId"`
+	OrderId        string `json:"orderId"`
 }

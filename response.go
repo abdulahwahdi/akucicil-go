@@ -34,14 +34,14 @@ type SummaryFee struct {
 type CheckoutOrderResp struct {
 	Code    string `json:"code"`
 	Message string `json:"message"`
-	Order   Order `json:"order"`
+	Order   Order  `json:"order"`
 	Error   Error  `json:"error"`
 }
 
 type Order struct {
 	OrderID            string    `json:"orderId"`
 	PartnerOrderID     string    `json:"partnerOrderId"`
-	PartnerOrderAmount int64    `json:"partnerOrderAmount"`
+	PartnerOrderAmount int64     `json:"partnerOrderAmount"`
 	OrderStatus        string    `json:"orderStatus"`
 	OrderStatusDesc    string    `json:"orderStatusDesc"`
 	PaymentEntryURL    string    `json:"paymentEntryUrl"`
@@ -52,4 +52,12 @@ type Order struct {
 type Error struct {
 	ErrorCode string `json:"errorCode"`
 	ErrorMsg  string `json:"errorMsg"`
+}
+
+type CancelResp struct {
+	Code     string `json:"code"`
+	Message  string `json:"message"`
+	RefundID string `json:"refundId"`
+	Order    Order  `json:"order"`
+	Error    Error  `json:"error"`
 }

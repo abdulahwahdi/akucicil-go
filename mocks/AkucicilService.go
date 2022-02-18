@@ -12,6 +12,27 @@ type AkucicilService struct {
 	mock.Mock
 }
 
+// Cancel provides a mock function with given fields: req
+func (_m *AkucicilService) Cancel(req akucicil.CancelOrderReq) (akucicil.CancelResp, error) {
+	ret := _m.Called(req)
+
+	var r0 akucicil.CancelResp
+	if rf, ok := ret.Get(0).(func(akucicil.CancelOrderReq) akucicil.CancelResp); ok {
+		r0 = rf(req)
+	} else {
+		r0 = ret.Get(0).(akucicil.CancelResp)
+	}
+
+	var r1 error
+	if rf, ok := ret.Get(1).(func(akucicil.CancelOrderReq) error); ok {
+		r1 = rf(req)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
 // CheckoutOrder provides a mock function with given fields: req
 func (_m *AkucicilService) CheckoutOrder(req akucicil.CheckoutOrderReq) (akucicil.CheckoutOrderResp, error) {
 	ret := _m.Called(req)

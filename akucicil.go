@@ -24,7 +24,7 @@ type Akucicil struct {
 	*logger
 }
 
-func New(baseUrl string, keyVersion string, apiKey string, privateKey []byte,  timeout time.Duration) *Akucicil {
+func New(baseUrl string, keyVersion string, apiKey string, privateKey []byte, timeout time.Duration) *Akucicil {
 	httpRequest := newRequest(timeout)
 	return &Akucicil{
 		BaseUrl:    baseUrl,
@@ -72,7 +72,7 @@ func (ac *Akucicil) GetInstallmentPlan(req InstallmentPlanReq) (resp Installment
 		Method:  method,
 		Path:    uri,
 		ReqID:   uuidData,
-		ReqTime:reqTime,
+		ReqTime: reqTime,
 		Body:    string(payload),
 	}
 
@@ -130,7 +130,65 @@ func (ac *Akucicil) CheckoutOrder(req CheckoutOrderReq) (resp CheckoutOrderResp,
 		Method:  method,
 		Path:    uri,
 		ReqID:   uuidData,
-		ReqTime:reqTime,
+		ReqTime: reqTime,
+		Body:    string(payload),
+	}
+
+	dataSignature, errSignature := ac.GetSignature(payloadSignature)
+	if errSignature != nil {
+		return response, errSignature
+	}
+
+	signature := fmt.Sprintf("Signature: alg=RSA256, keyVersion=%s, signature=%s", ac.KeyVersion, dataSignature)
+
+	// set header
+	headers := make(map[string]string)
+	headers["Accept"] = "application/json"
+	headers["Content-Type"] = "application/json"
+	headers["X-OP-ApiKey"] = ac.ApiKey
+	headers["X-OP-ReqId"] = uuidData
+	headers["X-OP-ReqTime"] = reqTime
+	headers["Signature"] = signature
+
+	err = ac.call(method, url, bytes.NewBuffer(payload), &response, headers)
+	if err != nil {
+		return response, err
+	}
+
+	return response, nil
+}
+
+func (ac *Akucicil) Cancel(req CancelOrderReq) (resp CancelResp, err error) {
+	ac.info().Println("Starting Cancel Order Akucicil")
+	defer func() {
+		if r := recover(); r != nil {
+			err = fmt.Errorf("panic: %v", r)
+		}
+		if err != nil {
+			ac.error().Println(err.Error())
+		}
+	}()
+
+	var response CancelResp
+
+	// set url
+	uri := fmt.Sprintf("/openpay/v1/%s/orders/%s/cancel", ac.ApiKey, req.PartnerOrderId)
+	url := fmt.Sprintf("%s%s", ac.BaseUrl, uri)
+
+	method := "POST"
+	uuidData, _ := uuid.GenerateUUID()
+	reqTime := time.Now().Format(time.RFC3339)
+	//Marshal Payload
+	payload, errPayload := json.Marshal(req)
+	if errPayload != nil {
+		return response, errPayload
+	}
+
+	payloadSignature := SignatureReq{
+		Method:  method,
+		Path:    uri,
+		ReqID:   uuidData,
+		ReqTime: reqTime,
 		Body:    string(payload),
 	}
 
