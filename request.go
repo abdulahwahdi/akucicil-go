@@ -36,6 +36,7 @@ type Item struct {
 }
 
 type CheckoutOrderReq struct {
+	UserToken          string    `json:"userToken,omitempty"`
 	PartnerOrderID     string    `json:"partnerOrderId"`
 	PartnerOrderAmount int64     `json:"partnerOrderAmount"`
 	Currency           string    `json:"currency"`
