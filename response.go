@@ -17,6 +17,7 @@ type InstallmentPlan struct {
 	TotalRepayment   int64      `json:"totalRepayment"`
 	MonthlyFee       MonthlyFee `json:"monthlyFee"`
 	SummaryFee       SummaryFee `json:"summaryFee"`
+	Amount           int64      `json:"amount"`
 }
 
 type MonthlyFee struct {
@@ -60,4 +61,20 @@ type CancelResp struct {
 	RefundID string `json:"refundId"`
 	Order    Order  `json:"order"`
 	Error    Error  `json:"error"`
+}
+
+type DetailOrderResp struct {
+	Code    string `json:"code"`
+	Message string `json:"message"`
+	Order   struct {
+		OrderID            string    `json:"orderId"`
+		PartnerOrderID     string    `json:"partnerOrderId"`
+		PartnerOrderAmount string    `json:"partnerOrderAmount"`
+		OrderStatus        string    `json:"orderStatus"`
+		OrderStatusDesc    string    `json:"orderStatusDesc"`
+		PaymentEntryURL    string    `json:"paymentEntryUrl"`
+		Metadata           string    `json:"metadata"`
+		CreateTime         time.Time `json:"createTime"`
+	} `json:"order"`
+	Error Error `json:"error"`
 }

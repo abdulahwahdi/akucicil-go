@@ -54,6 +54,27 @@ func (_m *AkucicilService) CheckoutOrder(req akucicil.CheckoutOrderReq) (akucici
 	return r0, r1
 }
 
+// GetDetailOrder provides a mock function with given fields: patnerOrderId
+func (_m *AkucicilService) GetDetailOrder(patnerOrderId string) (akucicil.DetailOrderResp, error) {
+	ret := _m.Called(patnerOrderId)
+
+	var r0 akucicil.DetailOrderResp
+	if rf, ok := ret.Get(0).(func(string) akucicil.DetailOrderResp); ok {
+		r0 = rf(patnerOrderId)
+	} else {
+		r0 = ret.Get(0).(akucicil.DetailOrderResp)
+	}
+
+	var r1 error
+	if rf, ok := ret.Get(1).(func(string) error); ok {
+		r1 = rf(patnerOrderId)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
 // GetInstallmentPlan provides a mock function with given fields: req
 func (_m *AkucicilService) GetInstallmentPlan(req akucicil.InstallmentPlanReq) (akucicil.InstallmentPlanResp, error) {
 	ret := _m.Called(req)
