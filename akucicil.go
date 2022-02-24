@@ -236,7 +236,7 @@ func (ac *Akucicil) GetDetailOrder(patnerOrderId string)(resp DetailOrderResp, e
 	var response DetailOrderResp
 
 	// set url
-	uri := fmt.Sprintf("openpay/v1/%s/orders/%s", ac.ApiKey, patnerOrderId)
+	uri := fmt.Sprintf("/openpay/v1/%s/orders/%s", ac.ApiKey, patnerOrderId)
 	url := fmt.Sprintf("%s%s", ac.BaseUrl, uri)
 
 	method := "GET"
