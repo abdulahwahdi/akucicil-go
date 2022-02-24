@@ -95,3 +95,24 @@ func (_m *AkucicilService) GetInstallmentPlan(req akucicil.InstallmentPlanReq) (
 
 	return r0, r1
 }
+
+// GetSignature provides a mock function with given fields: req
+func (_m *AkucicilService) GetSignature(req akucicil.SignatureReq) (string, error) {
+	ret := _m.Called(req)
+
+	var r0 string
+	if rf, ok := ret.Get(0).(func(akucicil.SignatureReq) string); ok {
+		r0 = rf(req)
+	} else {
+		r0 = ret.Get(0).(string)
+	}
+
+	var r1 error
+	if rf, ok := ret.Get(1).(func(akucicil.SignatureReq) error); ok {
+		r1 = rf(req)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
