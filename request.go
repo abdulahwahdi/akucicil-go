@@ -29,7 +29,7 @@ type Item struct {
 	CategoryName string `json:"categoryName"`
 	SkuID        string `json:"skuId"`
 	SkuName      string `json:"skuName"`
-	UnitPrice    int64  `json:"unitPrice"`
+	UnitPrice    string `json:"unitPrice"`
 	Qty          int64  `json:"qty"`
 	PictureUrl   string `json:"pictureUrl,omitempty"`
 	Seller       Seller `json:"seller"`
